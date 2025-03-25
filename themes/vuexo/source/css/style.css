@@ -1,15 +1,15 @@
+/** global */
+
 body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg-color);
-  color: var(--text-color);
-  font-family: var(--font-main);
-  line-height: 1.7;
-  letter-spacing: 0.03em;
+  background-color: #0f0f0f;
+  color: #e0e0e0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  padding: 2rem;
 }
 
 a {
-  color: var(--accent-color);
+  color: #4fc3f7;
   text-decoration: none;
 }
 
@@ -17,9 +17,45 @@ a:hover {
   text-decoration: underline;
 }
 
-#app {
-  max-width: 760px;
+.post-item {
+  background-color: #1a1a1a;
+}
+
+/** header */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  background: #0f0f0f;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #222;
+  z-index: 1000;
+}
+
+.site-header .container {
+  max-width: 960px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-header .logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #4fc3f7;
+}
+
+.site-header .nav a {
+  margin-left: 1rem;
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-header .nav a:hover {
+  color: #4fc3f7;
 }
 

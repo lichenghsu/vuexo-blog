@@ -6,30 +6,47 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const post = ref(null)
+    const loading = ref(true)
+    const error = ref(null)
 
     onMounted(async () => {
-  const res = await fetch('/api/posts.json')
-  const text = await res.text()
-  console.log('[DEBUG] raw response:', text)  
       try {
-    const data = JSON.parse(text)
-    post.value = data.find(p => p.slug === route.params.slug)
-  } catch (err) {
-    console.error('解析 JSON 發生錯誤', err)
-  }
-})
+        const res = await fetch('/content.json')
+        const data = await res.json()
+
+        const posts = Array.isArray(data) ? data : (data.posts || [])
+
+        const found = posts.find(p => p.slug === route.params.slug)
+
+        if (!found) {
+          throw new Error('Post not found')
+        }
+
+        post.value = found
+      } catch (err) {
+        error.value = err.message
+      } finally {
+        loading.value = false
+      }
+    })
+
     return {
-      post
+      post,
+      loading,
+      error
     }
   },
   template: `
-    <div v-if="post">
+    <div v-if="loading">
+      <p>Loading...</p>
+    </div>
+    <div v-else-if="error">
+      <p>{{ error }}</p>
+    </div>
+    <div v-else>
       <h1>{{ post.title }}</h1>
       <p>{{ post.date }}</p>
       <div v-html="post.content"></div>
-    </div>
-    <div v-else>
-      <p>Loading...</p>
     </div>
   `
 })

@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Vuexo
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
+author: lichenghsu
 language: en
 timezone: ''
 
@@ -106,19 +106,22 @@ deploy:
 # JsonContent
 
 jsonContent:
+  file: content.json
+  meta: false
   posts:
-    path: api/posts.json
-    pretty: true
     title: true
     slug: true
     date: true
-    updated: true
     content: true
     excerpt: true
     categories: true
     tags: true
+    layout: true
+    published: true
   pages:
-    path: api/pages.json
     title: true
+    slug: true
     date: true
     content: true
+    layout: true
+    published: true

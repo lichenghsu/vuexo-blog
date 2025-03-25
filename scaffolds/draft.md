@@ -1,4 +1,7 @@
 ---
 title: {{ title }}
-tags:
+slug: {{ title }}
+date: {{ date }}
+layout: post
+published: false
 ---

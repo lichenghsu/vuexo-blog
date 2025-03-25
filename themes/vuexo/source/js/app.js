@@ -1,9 +1,18 @@
-const { createApp } = Vue;
-import router from './router/index.js';
+const { createApp } = Vue
+import router from './router/index.js'
+import SiteHeader from './components/header.js'
 
 const App = {
-  template: '<router-view></router-view>'
-};
+  components: {
+    SiteHeader
+  },
+  template: `
+    <div>
+      <site-header></site-header>
+      <router-view></router-view>
+    </div>
+  `
+}
 
-createApp(App).use(router).mount('#app');
+createApp(App).use(router).mount('#app')
 
