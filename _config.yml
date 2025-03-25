@@ -96,9 +96,29 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: vuexo
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+# JsonContent
+
+jsonContent:
+  posts:
+    path: api/posts.json
+    pretty: true
+    title: true
+    slug: true
+    date: true
+    updated: true
+    content: true
+    excerpt: true
+    categories: true
+    tags: true
+  pages:
+    path: api/pages.json
+    title: true
+    date: true
+    content: true
