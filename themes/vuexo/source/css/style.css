@@ -3,7 +3,7 @@
 body {
   background-color: #0f0f0f;
   color: #e0e0e0;
-  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-family: "Inter", "Segoe UI", sans-serif;
   line-height: 1.6;
   padding: 2rem;
 }
@@ -80,3 +80,145 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Categories */
+
+.categories h2 {
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+.categories li {
+  margin-bottom: 0.25rem;
+}
+
+/* TOC */
+
+.toc {
+  position: fixed;
+  right: 2rem;
+  top: 100px;
+  width: 220px;
+  max-height: 80vh;
+  overflow-y: auto;
+  font-size: 0.875rem;
+  color: #999;
+}
+
+.toc-inner {
+  border-left: 2px solid #2a2a2a;
+  padding-left: 1rem;
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc li {
+  margin: 0.3rem 0;
+  cursor: pointer;
+}
+
+.toc li.active > a {
+  color: #4fc3f7;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.toc-h1 {
+  font-weight: bold;
+}
+.toc-h2 {
+  margin-left: 0.5rem;
+}
+.toc-h3 {
+  margin-left: 1rem;
+}
+
+.toc a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.toc active > a {
+  color: #4fc3f7;
+  font-weight: bold;
+  border-left: 2px solid #4fc3f7;
+  padding-left: 6px;
+}
+
+.toc .active > a {
+}
+
+@meia (max-width: 768px) {
+  .toc {
+    display: none;
+  }
+}
+
+/* adjustment for Header */
+
+.site-header {
+  display: block;
+}
+
+/* burger list for header */
+
+.site-header .burger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #4fc3f7;
+}
+
+/* global card outlook */
+
+.card {
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  transition: background 0.2s ease;
+}
+
+.card:hover {
+  background-color: #222;
+}
+
+.card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.card p {
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .site-header .burger {
+    display: block;
+  }
+
+  .site-header .nav {
+    flex-direction: column;
+    background: #111;
+    position: absolute;
+    top: 100%;
+    right: 1rem;
+    padding: 1rem;
+    border: 1px solid #333;
+    display: none;
+  }
+
+  .site-header .nav.open {
+    display: flex;
+  }
+
+  .site-header .nav a {
+    margin: 0.5rem 0;
+  }
+}

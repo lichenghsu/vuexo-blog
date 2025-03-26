@@ -1,40 +1,40 @@
-const { defineComponent, ref, onMounted } = Vue
-const { useRoute } = VueRouter
+const { defineComponent, ref, onMounted } = Vue;
+const { useRoute } = VueRouter;
 
 export default defineComponent({
-  name: 'PostPage',
+  name: "PostPage",
   setup() {
-    const route = useRoute()
-    const post = ref(null)
-    const loading = ref(true)
-    const error = ref(null)
+    const route = useRoute();
+    const post = ref(null);
+    const loading = ref(true);
+    const error = ref(null);
 
     onMounted(async () => {
       try {
-        const res = await fetch('/content.json')
-        const data = await res.json()
+        const res = await fetch("/content.json");
+        const data = await res.json();
 
-        const posts = Array.isArray(data) ? data : (data.posts || [])
+        const posts = Array.isArray(data) ? data : data.posts || [];
 
-        const found = posts.find(p => p.slug === route.params.slug)
+        const found = posts.find((p) => p.slug === route.params.slug);
 
         if (!found) {
-          throw new Error('Post not found')
+          throw new Error("Post not found");
         }
 
-        post.value = found
+        post.value = found;
       } catch (err) {
-        error.value = err.message
+        error.value = err.message;
       } finally {
-        loading.value = false
+        loading.value = false;
       }
-    })
+    });
 
     return {
       post,
       loading,
-      error
-    }
+      error,
+    };
   },
   template: `
     <div v-if="loading">
@@ -43,11 +43,10 @@ export default defineComponent({
     <div v-else-if="error">
       <p>{{ error }}</p>
     </div>
-    <div v-else>
+    <article v-else>
       <h1>{{ post.title }}</h1>
       <p>{{ post.date }}</p>
       <div v-html="post.content"></div>
-    </div>
-  `
-})
-
+    </article>
+  `,
+});
