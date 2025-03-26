@@ -9,27 +9,19 @@ export default defineComponent({
     const error = ref(null)
     const router = useRouter()
 
+onMounted(() => {
+  fetch('/content.json')
+    .then(res => res.json())
+    .then(data => {
+      const rawPosts = Array.isArray(data) ? data : (data.posts || [])
 
-onMounted(async () => {
-  try {
-    const res = await fetch('/content.json')
-    const data = await res.json()
-    console.log('[DEBUG] content.json raw data:', data)
-
-    const rawPosts = Array.isArray(data) ? data : (data.posts || [])
-    console.log('[DEBUG] rawPosts:', rawPosts)
-
-    posts.value = rawPosts
-      .filter(p => p.layout === 'post')
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-
-    console.log('[DEBUG] filtered posts:', posts.value)
-  } catch (err) {
-    error.value = 'Failed to load posts: ' + err.message
-    console.error('[ERROR]', err)
-  } finally {
-    loading.value = false
-  }
+      posts.value = rawPosts
+        .filter(p => p.layout === 'post')
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+    })
+    .finally(() => {
+      loading.value = false
+    })
 })
 
     const goToPost = (slug) => {
