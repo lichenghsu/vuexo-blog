@@ -1,60 +1,95 @@
-# Vuexo - A Vue-powered SPA Theme for Hexo
+# Vuexo-blog - A Vue-powered SPA Blog for Hexo
 
-Vuexo is a custom Hexo theme built with Vue 3 Composition API and a focus on SPA architecture. Inspired by [solwen.ai](https://solwen.ai/posts/machine-learning), it features a minimalist, modern tech style and complete front-end routing handled by Vue.
+![Vuexo logo](./themes/vuexo/source/images/vuexo-logo.svg)
+
+Vuexo-blog is a fully decoupled Hexo theme powered by Vue 3 Composition API. Designed with a minimal and modern tech aesthetic, it transforms your Hexo blog into a Vue SPA, where all content rendering and routing are handled by Vue.
 
 ## Features
 
-- Built with Vue 3 Composition API
-- Custom hash-based SPA routing
-- Fully decoupled front-end using Vue components
-- Hexo outputs only a minimal HTML shell; all content is handled by Vue
-- RESTful-ready structure (Hexo JSON output recommended)
-- Clean and modular structure for rapid development
-- Minimalist and tech-oriented styling
+- Powered by Vue 3 Composition API
+
+- SPA-style hash-based Vue Router
+
+- Fully decoupled front-end with modular Vue components
+
+- Hexo outputs only the base HTML shell + JSON content
+
+- RESTful-ready structure (compatible with hexo-generator-json-content)
+
+- Minimalist, tech-style layout & styling
+
+- TOC, categories, tags, sticky posts, and Giscus comment support
 
 ## Directory Structure
 
-````
-vuexo/
-├── languages/
-│   └── default.yml       # Localization file
-├── layout/
-│   └── index.ejs        # Main HTML template (empty shell)
+```markdown
+vuexo-blog/
+├── scaffolds/
+│ ├── draft.md
+│ ├── page.md
+│ └── post.md
 ├── source/
-│   ├── css/
-│   │   └── style.css     # Global styles
-│   └── js/
-│       ├── app.js        # Vue app entry point
-│       ├── router/
-│       │   └── index.js  # SPA routing logic
-│       ├── components/
-│       │   ├── footer.js # Page footer
-│       │   └── header.js # Top navigation bar
-│       │   └── toc.js    # Right-side Table of Contents
-│       └── pages/
-│           ├── categories.js
-│           ├── comments.js
-│           ├── home.js
-│           ├── post.js
-│           └── tags.js
-└── _config.yml           # Theme configuration
+├── themes/
+│ └── vuexo/
+│ ├── languages/
+│ │ └── default.yml
+│ ├── layout/
+│ │ └── index.ejs
+│ ├── source/
+│ │ ├── css/
+│ │ │ └── style.css
+│ │ ├── images/
+│ │ │ └── vuexo-logo.svg
+│ │ └── js/
+│ │ ├── app.js
+│ │ ├── router/
+│ │ │ └── index.js
+│ │ ├── components/
+│ │ │ ├── comments.js
+│ │ │ ├── footer.js
+│ │ │ ├── header.js
+│ │ │ └── toc.js
+│ │ └── pages/
+│ │ ├── categories.js
+│ │ ├── categoryPosts.js
+│ │ ├── home.js
+│ │ ├── post.js
+│ │ ├── tagPosts.js
+│ │ └── tags.js
+├── \_config.yml
+├── \_config.markdown-it.yml
+├── README.md
+├── package.json
+└── package-lock.json
+```
 
-## Usage
+## Getting Started
 
-1. Copy this theme folder to your Hexo project's `themes/` directory.
-2. In the Hexo root `_config.yml`, set:
+1. Clone or copy this theme into your Hexo project:
+
+```bash
+cd Vuexo-blog
+git clone https://github.com/your-username/vuexo-blog.git themes/vuexo
+```
+
+2. Configure your Hexo root \_config.yml:
 
 ```yml
 theme: vuexo
-````
-
-3. Start the Hexo server:
-
-```hash-based
-hexo clean && hexo generate && hexo server
 ```
 
-4. Vue will take full control of the front-end. Hexo is used for content generation only (JSON output recommended).
+3. Install hexo-generator-json-content:
 
-License
+```bash
+npm install hexo-generator-json-content --save
+```
+
+4. Start the development server:
+
+```bash
+hexo clean && hexo g && hexo s
+```
+
+## License
+
 MIT

@@ -15,7 +15,7 @@ export default defineComponent({
   template: `
     <header class="site-header">
       <div class="container">
-        <div class="logo" @click="$router.push('/')">MyTechBlog</div>
+        <div class="logo" @click="$router.push('/')">Vuexo</div>
         <div class="burger" @click="toggleMenu">☰</div>
         <nav class="nav" :class="{ open: menuOpen }">
           <RouterLink to="/" @click="menuOpen = false">Home</RouterLink>

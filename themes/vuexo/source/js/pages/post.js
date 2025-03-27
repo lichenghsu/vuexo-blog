@@ -1,26 +1,29 @@
-const { defineComponent, ref, onMounted } = Vue;
+const { defineComponent, ref, onMounted, watchEffect } = Vue;
+const { onBeforeUnmount } = Vue;
 const { useRoute } = VueRouter;
+import Comments from "../components/comments.js";
 
 export default defineComponent({
   name: "PostPage",
+  components: {
+    Comments,
+  },
   setup() {
     const route = useRoute();
     const post = ref(null);
     const loading = ref(true);
     const error = ref(null);
 
+    const defaultTitle = document.title;
+
     onMounted(async () => {
       try {
         const res = await fetch("/content.json");
         const data = await res.json();
-
         const posts = Array.isArray(data) ? data : data.posts || [];
 
         const found = posts.find((p) => p.slug === route.params.slug);
-
-        if (!found) {
-          throw new Error("Post not found");
-        }
+        if (!found) throw new Error("Post not found");
 
         post.value = found;
       } catch (err) {
@@ -30,6 +33,16 @@ export default defineComponent({
       }
     });
 
+    watchEffect(() => {
+      if (post.value?.title) {
+        document.title = `${post.value.title} | Vuexo`;
+      }
+    });
+
+    onBeforeUnmount(() => {
+      document.title = defaultTitle;
+    });
+
     return {
       post,
       loading,
@@ -37,16 +50,10 @@ export default defineComponent({
     };
   },
   template: `
-    <div v-if="loading">
-      <p>Loading...</p>
-    </div>
-    <div v-else-if="error">
-      <p>{{ error }}</p>
-    </div>
-    <article v-else>
+    <div v-if="post">
       <h1>{{ post.title }}</h1>
-      <p>{{ post.date }}</p>
       <div v-html="post.content"></div>
-    </article>
+      <Comments />
+    </div>
   `,
 });
