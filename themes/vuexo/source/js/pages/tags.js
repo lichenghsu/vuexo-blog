@@ -40,8 +40,7 @@ export default defineComponent({
     });
 
     const goToTag = (tag) => {
-      const encoded = encodeURIComponent(tag);
-      router.push(`/tags/${encoded}`);
+      router.push(`/tags/${encodeURIComponent(tag)}`);
     };
 
     const goToPost = (slug) => {
@@ -62,15 +61,20 @@ export default defineComponent({
       <div v-else-if="error">{{ error }}</div>
       <div v-else>
         <div v-for="(posts, tag) in tags" :key="tag" class="card">
-          <h2 @click="goToTag(tag)" style="cursor: pointer;">{{ tag }}</h2>
-          <ul style="margin-top: 0.5rem;">
-            <div v-for="post in posts" :key="post.slug" @click="goToPost(post.slug)" style="cursor: pointer;">
-              <span class="hover:underline">{{ post.title }}</span>
-              <small style="margin-left: 0.5rem; color: #888;">({{ post.date }})</small>
-            </div>
+          <h2 class="cursor-pointer mb-2" @click="goToTag(tag)">{{ tag }}</h2>
+          <ul class="space-y-1">
+            <li
+              v-for="post in posts"
+              :key="post.slug"
+              @click="goToPost(post.slug)"
+              class="cursor-pointer hover:underline text-sm"
+            >
+              {{ post.title }}
+              <small class="ml-2 text-gray-500">({{ post.date }})</small>
+            </li>
           </ul>
         </div>
       </div>
     </div>
-    `,
+  `,
 });

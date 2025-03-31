@@ -49,11 +49,15 @@ export default defineComponent({
       error,
     };
   },
+
   template: `
-    <div v-if="post">
+  <div v-if="post" class="post">
+    <div class="post-content">
       <h1>{{ post.title }}</h1>
-      <div v-html="post.content"></div>
+      <p class="post-date">{{ post.date }}</p>
+      <article v-html="post.content"></article>
       <Comments />
     </div>
-  `,
+  </div>
+`,
 });

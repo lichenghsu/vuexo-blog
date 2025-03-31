@@ -1,8 +1,12 @@
 const { defineComponent, ref, onMounted } = Vue;
 const { useRoute, useRouter } = VueRouter;
+import PostCard from "../components/postCard.js";
 
 export default defineComponent({
   name: "TagPostsPage",
+  components: {
+    PostCard,
+  },
   setup() {
     const route = useRoute();
     const router = useRouter();
@@ -42,19 +46,18 @@ export default defineComponent({
       goToPost,
     };
   },
-
   template: `
-  <div class="tag-posts">
-    <div v-if="loading">Loading...</div>
-    <div v-else-if="error">{{ error }}</div>
-    <div v-else>
-      <h2 class="text-lg font-bold text-pink-400 mb-4">{{ tagName }}</h2>
-      <div v-for="post in posts" :key="post.slug" class="card" @click="goToPost(post.slug)" style="cursor: pointer;">
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.date }}</p>
-        <p v-html="post.excerpt"></p>
-      </div>
-    </div>
+ <div class="tag-posts">
+  <div v-if="loading">Loading...</div>
+  <div v-else-if="error">{{ error }}</div>
+  <div v-else>
+    <h2 class="text-lg font-bold text-pink-400 mb-4">{{ tagName }}</h2>
+    <PostCard
+      v-for="post in posts"
+      :key="post.slug"
+      :post="post"
+      :onClick="goToPost"
+    />
   </div>
-`,
+</div>`,
 });

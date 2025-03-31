@@ -1,8 +1,12 @@
 const { defineComponent, ref, onMounted } = Vue;
 const { useRouter } = VueRouter;
+import PostCard from "../components/postCard.js";
 
 export default defineComponent({
   name: "HomePage",
+  components: {
+    PostCard,
+  },
   setup() {
     const router = useRouter();
     const stickyPosts = ref([]);
@@ -10,9 +14,7 @@ export default defineComponent({
     const loading = ref(true);
     const error = ref(null);
 
-    const goToPost = (slug) => {
-      router.push(`/post/${slug}`);
-    };
+    const goToPost = (slug) => router.push(`/post/${slug}`);
 
     onMounted(async () => {
       try {
@@ -57,19 +59,10 @@ export default defineComponent({
       <div v-else>
         <div v-if="stickyPosts.length">
           <h2 class="text-lg font-bold mb-2 text-yellow-400">📌 Featured</h2>
-          <div v-for="post in stickyPosts" :key="post.slug" class="card" @click="goToPost(post.slug)" style="cursor:pointer;">
-            <h2>{{ post.title }}</h2>
-            <p>{{ post.date }}</p>
-            <p v-html="post.excerpt"></p>
-          </div>
+          <PostCard v-for="post in stickyPosts" :key="post.slug" :post="post" :onClick="goToPost" />
         </div>
-
         <h2 class="text-lg font-bold mb-2 text-blue-400 mt-6">🕒 Latest Posts</h2>
-        <div v-for="post in latestPosts" :key="post.slug" class="card" @click="goToPost(post.slug)" style="cursor:pointer;">
-          <h2>{{ post.title }}</h2>
-          <p>{{ post.date }}</p>
-          <p v-html="post.excerpt"></p>
-        </div>
+        <PostCard v-for="post in latestPosts" :key="post.slug" :post="post" :onClick="goToPost" />
       </div>
     </div>
   `,

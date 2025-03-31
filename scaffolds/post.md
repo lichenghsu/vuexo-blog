@@ -1,5 +1,6 @@
 ---
 title: { { title } }
+cover: /images/cover.png
 date: { { date } }
 sticky: false
 tags: []

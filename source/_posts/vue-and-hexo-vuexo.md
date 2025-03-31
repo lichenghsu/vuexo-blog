@@ -1,5 +1,6 @@
 ---
 title: vue and hexo - vuexo
+cover: /images/cover.png
 sticky: false
 tags: [Vue, Hexo, 前端]
 categories: [開發筆記]

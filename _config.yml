@@ -114,6 +114,7 @@ jsonContent:
     date: true
     content: true
     excerpt: true
+    cover: true
     categories: true
     tags: true
     layout: true

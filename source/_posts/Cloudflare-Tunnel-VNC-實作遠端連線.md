@@ -1,5 +1,6 @@
 ---
 title: Cloudflare Tunnel + VNC 實作遠端連線
+cover: /images/cover.png
 tags: [遠端桌面, VNC, Cloudflare, 自架工具]
 sticky: true
 categories: [技術筆記, DNS]
