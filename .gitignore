@@ -1,0 +1,23 @@
+# Hexo generated files
+public/
+.deploy*/
+db.json
+*.log
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# VSCode settings
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Vue build artifacts (如有)
+dist/
+*.local
+.env

@@ -1,0 +1,11 @@
+# Markdown-it-anchor
+
+preset: "default"
+render:
+  html: true
+  xhtmlOut: true
+  breaks: false
+  linkify: true
+  typographer: true
+plugins:
+  - markdown-it-anchor

@@ -1,0 +1,20 @@
+# Set default behavior to automatically normalize line endings
+* text=auto
+
+# Force Unix-style (LF) endings for key file types
+*.js text eol=lf
+*.vue text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.md text eol=lf
+*.html text eol=lf
+*.yml text eol=lf
+
+# Binary files (no EOL normalization)
+*.png binary
+*.jpg binary
+*.gif binary
+*.svg binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
