@@ -1,7 +1,7 @@
 ---
-title: { { title } }
+title: {{ title }}
 cover: /images/cover.png
-date: { { date } }
+date: {{ date }}
 sticky: false
 tags: []
 categories: []

@@ -1,9 +1,9 @@
 ---
 title: Vue and Hexo - Vuexo 一款靜態部落格解決方案
 cover: /images/cover.png
-sticky: false
-tags: [Vue, Hexo, 前端]
-categories: [開發筆記]
+sticky: true
+tags: [Vuexo]
+categories: [Vuexo 開發筆記]
 layout: post
 published: true
 date: 2025-03-25 19:30:04
@@ -36,11 +36,12 @@ public/content.json ← 所有文章資料
 ```
 
 Vue + Vue Router + Composition API
-  - 首頁：文章清單（置頂＋最新）
-  - 文章頁：v-html 渲染 Markdown 內容
-  - TOC：右側浮動目錄
-  - Search：MiniSearch + Local Search
-  - Giscus：留言整合、主題同步
+
+- 首頁：文章清單（置頂＋最新）
+- 文章頁：v-html 渲染 Markdown 內容
+- TOC：右側浮動目錄
+- Search：MiniSearch + Local Search
+- Giscus：留言整合、主題同步
 
 ## 技術整合筆記
 

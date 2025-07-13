@@ -271,6 +271,9 @@
   .h-12 {
     height: calc(var(--spacing) * 12);
   }
+  .h-40 {
+    height: calc(var(--spacing) * 40);
+  }
   .w-6 {
     width: calc(var(--spacing) * 6);
   }
@@ -279,6 +282,9 @@
   }
   .w-14 {
     width: calc(var(--spacing) * 14);
+  }
+  .w-40 {
+    width: calc(var(--spacing) * 40);
   }
   .w-64 {
     width: calc(var(--spacing) * 64);
@@ -375,6 +381,9 @@
   }
   .bg-white {
     background-color: var(--color-white);
+  }
+  .object-cover {
+    object-fit: cover;
   }
   .p-1 {
     padding: calc(var(--spacing) * 1);
@@ -910,6 +919,15 @@ a:hover {
   text-decoration: underline;
   background-color: #21262d;
   border-color: #30363d;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+table, th, td {
+  border: 1px solid #f3f3f3;
+  padding: 8px;
 }
 .dark pre, .dark code {
   background-color: #1e1e1e !important;

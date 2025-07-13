@@ -88,10 +88,10 @@ export default defineComponent({
           <SearchInput :data="posts" class="hidden md:block w-64 mx-4" />
 
         <div class="hidden md:flex gap-6 items-center flex-1 justify-end">
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/categories">Categories</RouterLink>
-          <RouterLink to="/tags">Tags</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/">首頁</RouterLink>
+          <RouterLink to="/categories">類別</RouterLink>
+          <RouterLink to="/tags">標籤</RouterLink>
+          <RouterLink to="/about">關於我</RouterLink>
 
           <div
             class="w-14 h-8 flex items-center bg-gray-300 dark:bg-gray-700 rounded-full p-1 cursor-pointer transition-colors duration-300"
