@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build:css": "postcss themes/vuexo/source/css/tailwind.css -o themes/vuexo/source/css/style.css",
-    "build": "npm run build:css && hexo generate",
-    "clean": "hexo clean",
-    "deploy": "hexo deploy",
-    "server": "hexo server"
+    "build:css": "npx tailwindcss -i themes/vuexo/source/css/custom.css -o themes/vuexo/source/css/style.css --minify",
+    "build": "npm run build:css && npx hexo generate",
+    "clean": "npx hexo clean",
+    "deploy": "npx hexo deploy",
+    "server": "npx hexo server",
+    "dev": "npm run build:css && npx hexo clean && npx hexo generate && npx hexo server"
   },
   "hexo": {
     "version": "7.3.0"
@@ -15,6 +16,7 @@
   "dependencies": {
     "@tailwindcss/cli": "^4.1.11",
     "hexo": "^7.3.0",
+    "hexo-cli": "^4.3.2",
     "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
@@ -23,11 +25,10 @@
     "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-markdown-it": "^7.1.1",
-    "hexo-renderer-marked": "^7.0.0",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
-    "markdown-it-anchor": "^9.2.0",
     "minisearch": "^7.1.2",
+    "prismjs": "^1.29.0",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {

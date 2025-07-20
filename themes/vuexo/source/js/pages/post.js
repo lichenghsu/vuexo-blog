@@ -1,7 +1,43 @@
-const { defineComponent, watch, ref, onMounted, watchEffect, onBeforeUnmount } = Vue;
+const { defineComponent, watch, ref, onMounted, watchEffect, onBeforeUnmount, nextTick } =
+  Vue;
 const { useRoute } = VueRouter;
 import Comments from "../components/comments.js";
 import { BASE_URL } from "../utils/baseUrl.js";
+
+function addLanguageLabels() {
+  document.querySelectorAll('pre[data-language]').forEach(pre => {
+    if (pre.dataset.hasLangLabel) return;
+
+    const lang = pre.dataset.language;
+    const label = document.createElement('div');
+    label.className = 'code-lang-label';
+    label.textContent = lang.trim().toLowerCase();
+
+    pre.style.position = 'relative';
+    pre.appendChild(label);
+    pre.dataset.hasLangLabel = 'true';
+  });
+}
+
+function enhanceYoutubeLinks() {
+  const links = document.querySelectorAll('a[href*="youtu"]');
+
+  links.forEach(link => {
+    const url = new URL(link.href);
+    const videoId = url.searchParams.get('v') || url.pathname.split('/').pop();
+
+    if (videoId) {
+      const preview = document.createElement('div');
+      preview.className = 'youtube-preview mt-2';
+      preview.innerHTML = `
+        <a href="${link.href}" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="YouTube Preview" class="rounded shadow">
+        </a>
+      `;
+      link.parentNode.insertBefore(preview, link.nextSibling);
+    }
+  });
+}
 
 function setGiscusTheme(theme) {
   if (location.hostname !== "lichenghsu.github.io") return;
@@ -29,7 +65,6 @@ function setGiscusTheme(theme) {
   }
 }
 
-
 export default defineComponent({
   name: "PostPage",
   components: { Comments },
@@ -56,6 +91,11 @@ export default defineComponent({
       } finally {
         loading.value = false;
         setupGiscusThemeObserver();
+        nextTick(() => {
+        if (window.Prism) {
+          Prism.highlightAll();
+          addLanguageLabels();
+        }});
       }
     };
 
@@ -74,15 +114,30 @@ export default defineComponent({
 
     onMounted(() => {
       fetchPost(route.params.slug);
+      watchEffect(() => {
+        if (post.value?.content) {
+          nextTick(() => {
+            addLanguageLabels();
+            enhanceYoutubeLinks()
+          });
+        }
+      });
     });
-
-    watch(() => route.params.slug, async (newSlug) => {
-      await fetchPost(newSlug);
-    });
+    watch(
+      () => route.params.slug,
+      async (newSlug) => {
+        await fetchPost(newSlug);
+      }
+    );
 
     watchEffect(() => {
       if (post.value?.title) {
         document.title = `${post.value.title} | Vuexo`;
+        nextTick(() => {
+          if (window.Prism) {
+            Prism.highlightAll();
+          }
+        });
       }
     });
 
@@ -108,4 +163,3 @@ export default defineComponent({
     </div>
   `,
 });
-

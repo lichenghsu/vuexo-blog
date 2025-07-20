@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  hexo:
+    image: node:22-alpine
+    container_name: hexo-blog
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "4000:4000"
+    command: sh -c "npm install && npx hexo clean && npx hexo generate && npx hexo server"

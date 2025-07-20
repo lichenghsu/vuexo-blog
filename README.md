@@ -47,17 +47,61 @@ vuexo-blog/
 
 ### 1. Install dependencies
 
+1. Set up Hexo environment
+
+- Use Docker
+
 ```bash
-npm install hexo-generator-json-content hexo-renderer-ejs hexo-renderer-stylus hexo-server --save
+# pull Node.js images:
+docker pull node:22-alpine
+# this command starts a container to run Hexo commands (e.g., npm install, hexo server)
+docker run -it --rm --name hexo-blog -v "/XXX/XXX/vuexo-blog:/app" -w /app -p 4000:4000 node:22-alpine sh
 ```
 
+2. Install Hexo dependencies (inside container)
+
+```bash
+npm install --save \
+  hexo \
+  hexo-cli \
+  hexo-generator-index \
+  hexo-generator-archive \
+  hexo-generator-tag \
+  hexo-generator-category \
+  hexo-generator-json-content \
+  hexo-renderer-ejs \
+  hexo-renderer-stylus \
+  hexo-renderer-marked \
+  hexo-server \
+  hexo-deployer-git \
+  hexo-prism-plugin \
+  prismjs@1.29.0
+```
+
+3. **`[Recommend]`** Or just use Dockerfile (take ubuntu for example)
+
+```bash
+docker-compose up # use: docker-compose up -d (if you want run on background)
+```
+
+Visit: [http://localhost:4000](http://localhost:4000)
+
 ### 2. Start local server
+
+- With Docker
+
+```bash
+# enter container if you not entry
+docker exec -it hexo-blog sh
+
+npx hexo clean && npx hexo generate && npx hexo server
+```
+
+- If you run on local Node
 
 ```bash
 hexo clean && hexo generate && hexo server
 ```
-
-Visit: [http://localhost:4000](http://localhost:4000)
 
 ---
 
@@ -66,7 +110,7 @@ Visit: [http://localhost:4000](http://localhost:4000)
 ### Create a new post
 
 ```bash
-hexo new post "Your Post Title"
+npx hexo new post "Your Post Title"
 ```
 
 Supported front matter:
@@ -85,13 +129,13 @@ sticky: true # Shown in top carousel
 ### Create a draft
 
 ```bash
-hexo new draft "Draft Title"
+npx hexo new draft "Draft Title" # use npx if you run on Docker
 ```
 
 ### Create a page (e.g., About)
 
 ```bash
-hexo new page "about"
+npx hexo new page "about" # use npx if you run on Docker
 ```
 
 The result will be rendered at `/about` via Vue's router.
@@ -110,7 +154,7 @@ root: /vuexo-blog/
 2. Install deploy plugin:
 
 ```bash
-npm install hexo-deployer-git --save
+npx npm install hexo-deployer-git --save # use npx if you run on Docker
 ```
 
 3. Add deploy settings:
@@ -125,6 +169,9 @@ deploy:
 4. Deploy:
 
 ```bash
+npx hexo clean && npx hexo generate && npx hexo deploy
+
+# or run on local directly
 hexo clean && hexo generate && hexo deploy
 ```
 
@@ -137,8 +184,9 @@ Live URL: [https://lichenghsu.github.io/lcxlab.github.io/](https://lichenghsu.gi
 1. New post:
 
 ```bash
-hexo new post "Your Post Title"
+hexo new post "Your Post Title" # use npx if you run on Docker
 ```
+
 Supported front matter:
 
 ```markdown
@@ -152,13 +200,11 @@ top: true # For sticky list view
 sticky: true # Shown in top carousel
 ```
 
-
 2. Create a draft
 
 ```bash
-hexo new draft "Draft Title"
+npxhexo new draft "Draft Title"  # use npx if you run on Dockert# 
 ```
-
 
 ## Comments (Giscus)
 
