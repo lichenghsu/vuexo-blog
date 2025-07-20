@@ -43,9 +43,12 @@ external_link:
   exclude: ""
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: false # Enable post asset folder 
 relative_link: false
 future: true
+marked:
+  prependRoot: true
+  postAsset: true
 
 syntax_highlighter: prismjs
 highlight:

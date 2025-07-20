@@ -65,6 +65,13 @@ function setGiscusTheme(theme) {
   }
 }
 
+function fixImageSrc(html) {
+  return html.replace(/<img\s+([^>]*?)src=["'](\/images\/[^"']+)["']/g, (match, preAttrs, src) => {
+    const fixedSrc = `${BASE_URL.replace(/\/$/, '')}${src}`; 
+    return `<img ${preAttrs}src="${fixedSrc}"`;
+  });
+}
+
 export default defineComponent({
   name: "PostPage",
   components: { Comments },
@@ -83,6 +90,10 @@ export default defineComponent({
         const posts = Array.isArray(data) ? data : data.posts || [];
         const found = posts.find((p) => p.slug === slug);
         if (!found) throw new Error("Post not found");
+        // Fix image sources in post content
+        if (found?.content) {
+          found.content = fixImageSrc(found.content);
+        }
         post.value = found;
         error.value = null;
       } catch (err) {
