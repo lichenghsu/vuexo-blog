@@ -98,7 +98,7 @@ ifconfig
 
 ## 2. 如何使用？
 
-### 1. 在 Docker 中部署 Nginx
+### 在 Docker 中部署 Nginx
 
 ```bash
 docker run -d -p 8080:80 --name nginx-test nginx

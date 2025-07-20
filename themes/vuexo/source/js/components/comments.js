@@ -1,4 +1,4 @@
-const { defineComponent, onMounted, watch, ref } = Vue;
+const { defineComponent, onMounted, watch, nextTick, ref } = Vue;
 const { useRoute } = VueRouter;
 
 export default defineComponent({
@@ -15,9 +15,8 @@ export default defineComponent({
         container.removeChild(container.firstChild);
       }
 
-      const theme = document.documentElement.classList.contains("dark")
-        ? "dark_dimmed"
-        : "light";
+      const storedTheme = localStorage.getItem("theme");
+      const theme = storedTheme === "dark" ? "dark_dimmed" : "light";
 
       const script = document.createElement("script");
       script.src = "https://giscus.app/client.js";
@@ -95,7 +94,9 @@ export default defineComponent({
       () => route.fullPath,
       () => {
         giscusKey.value++;
-        setTimeout(() => loadGiscus(), 100);
+        nextTick(() => {
+          loadGiscus();
+        });
       }
     );
 

@@ -2,7 +2,6 @@ const { defineComponent, watch, ref, onMounted, watchEffect, onBeforeUnmount, ne
   Vue;
 const { useRoute } = VueRouter;
 import Comments from "../components/comments.js";
-import { BASE_URL } from "../utils/baseUrl.js";
 
 function addLanguageLabels() {
   document.querySelectorAll('pre[data-language]').forEach(pre => {
@@ -40,7 +39,9 @@ function enhanceYoutubeLinks() {
 }
 
 function setGiscusTheme(theme) {
-  if (location.hostname !== "lichenghsu.github.io") return;
+  
+  const allowedHosts = ["lcxlab.com", "www.lcxlab.com"];
+  if (!allowedHosts.includes(location.hostname)) return;
 
   const tryPostMessage = () => {
     const iframe = document.querySelector("iframe.giscus-frame");
@@ -65,12 +66,12 @@ function setGiscusTheme(theme) {
   }
 }
 
-function fixImageSrc(html) {
-  return html.replace(/<img\s+([^>]*?)src=["'](\/images\/[^"']+)["']/g, (match, preAttrs, src) => {
-    const fixedSrc = `${BASE_URL.replace(/\/$/, '')}${src}`; 
-    return `<img ${preAttrs}src="${fixedSrc}"`;
-  });
-}
+// function fixImageSrc(html) {
+//   return html.replace(/<img\s+([^>]*?)src=["'](\/images\/[^"']+)["']/g, (match, preAttrs, src) => {
+//     const fixedSrc = `${BASE_URL.replace(/\/$/, '')}${src}`; 
+//     return `<img ${preAttrs}src="${fixedSrc}"`;
+//   });
+// }
 
 export default defineComponent({
   name: "PostPage",
@@ -85,15 +86,15 @@ export default defineComponent({
     const fetchPost = async (slug) => {
       loading.value = true;
       try {
-        const res = await fetch(BASE_URL + "/content.json");
+        const res = await fetch("/content.json");
         const data = await res.json();
         const posts = Array.isArray(data) ? data : data.posts || [];
         const found = posts.find((p) => p.slug === slug);
         if (!found) throw new Error("Post not found");
         // Fix image sources in post content
-        if (found?.content) {
-          found.content = fixImageSrc(found.content);
-        }
+        // if (found?.content) {
+        //   found.content = fixImageSrc(found.content);
+        // }
         post.value = found;
         error.value = null;
       } catch (err) {

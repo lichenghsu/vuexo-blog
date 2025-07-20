@@ -1,7 +1,6 @@
 const { defineComponent, ref, onMounted } = Vue;
 const { useRoute, useRouter } = VueRouter;
 import PostCard from "../components/postCard.js";
-import { BASE_URL } from "../utils/baseUrl.js";
 
 export default defineComponent({
   name: "CategoryPostsPage", // or TagPostsPage
@@ -20,7 +19,7 @@ export default defineComponent({
 
     onMounted(async () => {
       try {
-        const res = await fetch(BASE_URL + "/content.json");
+        const res = await fetch("/content.json");
         const data = await res.json();
         const rawPosts = Array.isArray(data) ? data : data.posts || [];
 

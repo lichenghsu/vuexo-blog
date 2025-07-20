@@ -1,11 +1,13 @@
-import { BASE_URL } from "../utils/baseUrl.js";
 import SearchInput from "./searchInput.js";
 
 const { defineComponent, ref, onMounted } = Vue;
 const { RouterLink } = VueRouter;
 
+
 function setGiscusTheme(theme) {
-  if (location.hostname !== "lichenghsu.github.io") return;
+  
+  const allowedHosts = ["lcxlab.com", "www.lcxlab.com"];
+  if (!allowedHosts.includes(location.hostname)) return;
 
   const tryPostMessage = () => {
     const iframe = document.querySelector("iframe.giscus-frame");
@@ -29,7 +31,6 @@ function setGiscusTheme(theme) {
     }, 500);
   }
 }
-
 
 
 
@@ -69,7 +70,7 @@ export default defineComponent({
 
       (async () => {
         try {
-          const res = await fetch(BASE_URL + "/content.json");
+          const res = await fetch("/content.json");
           const data = await res.json();
           posts.value = data.posts || data;
         } catch (err) {

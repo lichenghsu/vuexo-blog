@@ -1,5 +1,3 @@
-import { BASE_URL } from "../utils/baseUrl.js";
-
 const { defineComponent, ref, onMounted } = Vue;
 const { useRouter } = VueRouter;
 
@@ -13,7 +11,7 @@ export default defineComponent({
 
     onMounted(async () => {
       try {
-        const res = await fetch(BASE_URL + "/content.json");
+        const res = await fetch("/content.json");
         const data = await res.json();
         const posts = Array.isArray(data) ? data : data.posts || [];
 

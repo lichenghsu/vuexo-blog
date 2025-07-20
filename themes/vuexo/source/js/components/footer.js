@@ -1,5 +1,4 @@
 const { defineComponent, ref, watchEffect } = Vue;
-import { BASE_URL } from "../utils/baseUrl.js";
 
 export default defineComponent({
   name: 'SiteFooter',
@@ -8,7 +7,7 @@ export default defineComponent({
 
     const updateLogo = () => {
       const isDark = document.documentElement.classList.contains("dark");
-      logoUrl.value = `${BASE_URL}images/${isDark ? "cover.png" : "vuexo-logo.svg"}`;
+      logoUrl.value = `images/${isDark ? "cover.png" : "vuexo-logo.svg"}`;
     };
 
     updateLogo();

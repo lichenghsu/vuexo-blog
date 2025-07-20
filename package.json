@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build:css": "npx tailwindcss -i themes/vuexo/source/css/custom.css -o themes/vuexo/source/css/style.css --minify",
-    "build": "npm run build:css && npx hexo generate",
-    "clean": "npx hexo clean",
-    "deploy": "npx hexo deploy",
-    "server": "npx hexo server",
-    "dev": "npm run build:css && npx hexo clean && npx hexo generate && npx hexo server"
+  "build:css": "npx tailwindcss -i themes/vuexo/source/css/custom.css -o themes/vuexo/source/css/style.css --minify",
+  "build": "npm run build:css && npx hexo generate",
+  "clean": "npx hexo clean",
+  "deploy": "npm run clean && npm run build && npx hexo deploy",
+  "server": "npx hexo server",
+  "dev": "npm run build:css && npm run clean && npm run build && npm run server"
   },
   "hexo": {
     "version": "7.3.0"

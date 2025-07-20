@@ -1,5 +1,3 @@
-import post from "../pages/post.js";
-import { BASE_URL } from "../utils/baseUrl.js";
 
 const { defineComponent } = Vue;
 
@@ -13,7 +11,7 @@ export default defineComponent({
     coverUrl() {
       if (!this.post?.cover) return null;
       const path = this.post.cover.replace(/^\/+/, "");
-      return `${BASE_URL}${path}`;
+      return `${path}`;
     },
   },
   template: `
