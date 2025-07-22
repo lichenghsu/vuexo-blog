@@ -117,10 +117,10 @@ export default defineComponent({
 
       <!-- 漢堡展開選單 -->
       <div v-if="menuOpen" class="md:hidden hidden-content bg-white px-4 pb-4">
-        <RouterLink to="/" class="block py-2" @click="menuOpen = false">Home</RouterLink>
-        <RouterLink to="/categories" class="block py-2" @click="menuOpen = false">Categories</RouterLink>
-        <RouterLink to="/tags" class="block py-2" @click="menuOpen = false">Tags</RouterLink>
-        <RouterLink to="/about" class="block py-2" @click="menuOpen = false">About</RouterLink>
+        <RouterLink to="/" class="block py-2" @click="menuOpen = false">首頁</RouterLink>
+        <RouterLink to="/categories" class="block py-2" @click="menuOpen = false">類別</RouterLink>
+        <RouterLink to="/tags" class="block py-2" @click="menuOpen = false">標籤</RouterLink>
+        <RouterLink to="/about" class="block py-2" @click="menuOpen = false">關於作者</RouterLink>
         <div
           class="w-14 h-8 mt-2 flex items-center bg-gray-300 rounded-full p-1 cursor-pointer transition-colors duration-300"
           @click="toggleTheme"

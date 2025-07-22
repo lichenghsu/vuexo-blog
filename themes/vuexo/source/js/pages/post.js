@@ -2,6 +2,7 @@ const { defineComponent, watch, ref, onMounted, watchEffect, onBeforeUnmount, ne
   Vue;
 const { useRoute } = VueRouter;
 import Comments from "../components/comments.js";
+import { formatDate } from "../utils/date.js";
 
 function addLanguageLabels() {
   document.querySelectorAll('pre[data-language]').forEach(pre => {
@@ -76,6 +77,9 @@ function setGiscusTheme(theme) {
 export default defineComponent({
   name: "PostPage",
   components: { Comments },
+  methods: {
+    formatDate,
+  },
   setup() {
     const route = useRoute();
     const post = ref(null);
@@ -168,7 +172,7 @@ export default defineComponent({
     <div v-if="post" class="post">
       <div class="post-content prose dark:prose-invert max-w-none">
         <h1 class="text-3xl text-gray-700 font-bold">{{ post.title }}</h1>
-        <p class="text-sm text-gray-700 mb-4">{{ post.date }}</p>
+        <p class="text-sm text-gray-700 mb-4">{{ formatDate(post.date) }}</p>
         <div class="text-gray-700" v-html="post.content"></div>
         <Comments />
       </div>

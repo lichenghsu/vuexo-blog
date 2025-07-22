@@ -35,7 +35,7 @@ export default defineComponent({
     };
   },
   template: `
-    <aside class="w-64 h-screen overflow-y-auto px-4 py-6 text-sm bg-white hidden border-r border-transparent lg:block">
+    <aside class="w-64 h-screen overflow-y-auto px-4 py-6 text-sm bg-white hidden border-r border-transparent block lg:block">
       <div v-for="(posts, category) in postsByCategory" :key="category" class="mb-6">
         <h3 class="text-white dark:text-gray-200 font-semibold mb-2">{{ category }}</h3>
         <ul class="pl-2 space-y-1">

@@ -1,10 +1,10 @@
 ---
-title: Java 環境簡介
+title: Java 環境簡介 (Environment)
 cover: /images/java/Java-Logo.jpg
 sticky: flase
 tags: [Java]
 categories: [Java 基本語法]
-order: 2
+order: 1
 layout: post
 published: true
 date: 2025-07-21 17:29:49

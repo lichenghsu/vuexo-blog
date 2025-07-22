@@ -3,7 +3,7 @@ name: Deploy Hexo to GitHub Pages
 on:
   push:
     branches:
-      - origin main
+      - main
 
 jobs:
   build-deploy:
@@ -44,3 +44,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           publish_branch: gh-pages
+
+      - name: Notify local visit microservice (optional)
+        run: |
+          echo "🔔 Attempting to notify local microservice (ignore error if offline)..."
+          curl --connect-timeout 3 http://your-home-ip:3000/api/hexo-deploy || echo "❌ Microservice unreachable, skip notifying."

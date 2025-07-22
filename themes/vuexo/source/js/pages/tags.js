@@ -1,8 +1,13 @@
+import { formatDate } from "../utils/date.js";
+
 const { defineComponent, ref, onMounted } = Vue;
 const { useRouter } = VueRouter;
 
 export default defineComponent({
   name: "TagsPage",
+  methods: {
+    formatDate,
+  },
   setup() {
     const router = useRouter();
     const tags = ref({});
@@ -70,7 +75,7 @@ export default defineComponent({
               class="cursor-pointer post-name hover:underline text-sm text-white"
             >
               {{ post.title }}
-              <small class="ml-2 text-gray-500">({{ post.date }})</small>
+              <small class="ml-2 text-gray-500">({{ formatDate(post.date) }})</small>
             </li>
           </ul>
         </div>

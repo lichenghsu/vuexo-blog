@@ -1,11 +1,11 @@
 ---
-title: Java 物件導向設計 Object Oriented Design (OOD) 
+title: Java 物件導向設計 (Object Oriented Design) 
 cover: /images/java/Java-Logo.jpg
 date: 2025-07-13 21:44:12
 sticky: false
 tags: [Java, 物件導向設計]
 categories: [Java 基本語法]
-order: 1
+order: 4
 layout: post
 published: true
 ---
@@ -14,7 +14,7 @@ published: true
 
 Java是一種純物件導向語言，幾乎由物件組成(除了原始型別如:int、 boolean 等)。
 
-## 一、物件導向簡介
+## 1. 物件導向簡介
 
 - **目的**：建構可重用、可維護的軟體結構
 - **核心價值**：
@@ -25,7 +25,7 @@ Java是一種純物件導向語言，幾乎由物件組成(除了原始型別如
 
 ---
 
-## 二、類別與物件
+## 2. 類別與物件
 
 | 概念       | 定義 | 說明                                     |
 | ---------- | ---- | ---------------------------------------- |
@@ -46,7 +46,7 @@ Person p = new Person(); // p 為 Person 類別的實例
 
 ---
 
-## 三、四大特性（Abstraction, Encapsulation, Inheritance, Polymorphism）
+## 3. 四大特性（Abstraction, Encapsulation, Inheritance, Polymorphism）
 
 ### 封裝（Encapsulation）
 
@@ -117,7 +117,7 @@ interface Drawable {
 
 ---
 
-## 四、關係關聯（UML 中的重要觀念）
+## 4. 關係關聯（UML 中的重要觀念）
 
 | 關係型態 | 英文           | 說明                          |
 | -------- | -------------- | ----------------------------- |
@@ -129,7 +129,7 @@ interface Drawable {
 
 ---
 
-## 五、static / final 補充
+## 5. static / final 補充
 
 | 修飾詞   | 用途                         |
 | -------- | ---------------------------- |
@@ -138,7 +138,7 @@ interface Drawable {
 
 ---
 
-## 六、設計流程：從需求轉為設計
+## 6. 設計流程：從需求轉為設計
 
 1. **分析需求敘述中的名詞** → 類別、屬性候選
 2. **分析動詞** → 方法候選

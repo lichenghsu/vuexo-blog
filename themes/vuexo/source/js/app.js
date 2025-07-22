@@ -30,7 +30,7 @@ const App = {
           <back-to-top />
 
           <!-- Sidebar -->
-          <aside class="sticky top-0 h-screen w-64 overflow-y-auto shrink-0 border-transparent lg:block bg-red-100">
+          <aside class="sticky top-0 h-screen w-64 overflow-y-auto shrink-0 border-transparent block lg:block bg-red-100 hidden">
             <side-bar-nav />
           </aside>
 

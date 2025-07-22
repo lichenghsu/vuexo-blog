@@ -5,7 +5,7 @@ date: 2025-07-11 23:35:04
 sticky: false
 tags: [Java, 運算子, 複合運算子]
 categories: [Java 基本語法]
-order: 4
+order: 3
 layout: post
 published: true
 ---
