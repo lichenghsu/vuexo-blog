@@ -140,6 +140,7 @@ jsonContent:
     excerpt: true
     cover: true
     categories: true
+    order: true
     tags: true
     layout: true
     published: true

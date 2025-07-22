@@ -1,10 +1,11 @@
 ---
 title: Java 物件導向設計 Object Oriented Design (OOD) 
-cover: /images/cover.png
+cover: /images/java/Java-Logo.jpg
 date: 2025-07-13 21:44:12
 sticky: false
 tags: [Java, 物件導向設計]
 categories: [Java 基本語法]
+order: 1
 layout: post
 published: true
 ---

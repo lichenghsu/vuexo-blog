@@ -1,10 +1,11 @@
 ---
 title: Java 複合運算子筆記（Compound Assignment Operators）
-cover: /images/cover.png
+cover: /images/java/Java-Logo.jpg
 date: 2025-07-11 23:35:04
 sticky: false
 tags: [Java, 運算子, 複合運算子]
 categories: [Java 基本語法]
+order: 4
 layout: post
 published: true
 ---

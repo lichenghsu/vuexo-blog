@@ -58,10 +58,10 @@ a:hover {
   width: 100%;
   position: sticky;
   top: 0;
-  background: hsl(0, 0%, 100%);
+  background: hsl(0, 0%, 80%);
   color: #0b0b0b;
   padding: 1rem 2rem;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #22222228;
   z-index: 1000;
 }
 
@@ -95,12 +95,12 @@ a:hover {
 
 .site-footer {
   width: 100%;
-  background: white;
+  background: #CCCCCC;
   color: #323232;
   font-size: 0.9rem;
   padding: 1rem 2rem;
   text-align: center;
-  border-top: 1px solid #222;
+  border-top: 1px solid #22222228;
   margin-top: 4rem;
 }
 
@@ -361,6 +361,15 @@ a:hover {
   font-weight: 600;
 }
 
+.post-content h1::after,
+.post-content h2::after,
+.post-content h3::after {
+  content: "";
+  display: block;
+  margin-top: 0.5rem;
+  border-bottom: 1px solid #ccc;
+}
+
 .post-content h1 {
   font-size: 1.875rem;
   font-weight: bold;
@@ -462,7 +471,7 @@ table, th, td {
 .dark pre,
 .dark code {
   color: #d4d4d4 !important;
-  background-color: #1e293a !important;
+  background-color: #435879 !important;
 }
 
 .dark code .hljs-comment {
@@ -760,4 +769,49 @@ blockquote cite {
 /* === YouTube Links Enhancement === */
 .youtube-preview img {
   @apply w-full max-w-md rounded-lg shadow-md hover:opacity-90 transition;
+}
+
+/* === Hr === */
+.post-content hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 1.5rem 0;
+}
+
+/* === Fix Prismjs code block === */
+pre[class*="language-"] > code {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+  display: block;
+}
+
+/* === Prismjs line-numbers === */
+pre.line-numbers {
+  padding-left: 1em;
+}
+
+pre.line-numbers > code {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* === Aside === */
+.text-blue-500, .dark .text-blue-500 {
+  color: #3b82f6; /* Tailwind blue-500 */
+}
+
+aside {
+  background-color: #CCCCCC;
+}
+
+.dark aside, .dark aside li {
+  background-color: #1f2937; /* Tailwind slate-800 */
+}
+
+aside li, aside h3 {
+  color: #020202ce
+}
+
+.dark aside li, .dark aside h3 {
+  color: #e2e8f0; /* Tailwind text-slate-200 */
 }
