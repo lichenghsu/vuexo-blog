@@ -43,7 +43,7 @@ jobs:
         with:
           personal_token: ${{ secrets.DEPLOY_TOKEN }}
           external_repository: lichenghsu/lcxlab.github.io
-          publish_branch: main
+          publish_branch: gh-pages
           publish_dir: ./public
 
       - name: Notify local visit microservice (optional)
