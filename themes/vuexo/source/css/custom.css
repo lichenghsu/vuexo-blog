@@ -56,13 +56,13 @@ a:hover {
 
 .site-header {
   width: 100%;
-  position: sticky;
+  position: relative;
   top: 0;
   background: hsl(0, 0%, 80%);
   color: #0b0b0b;
   padding: 1rem 2rem;
   border-bottom: 1px solid #22222228;
-  z-index: 1000;
+  z-index: 40;
 }
 
 .site-header .container {
@@ -95,12 +95,12 @@ a:hover {
 
 .site-footer {
   width: 100%;
-  background: #CCCCCC;
+  background: #e0e0e0;
   color: #323232;
   font-size: 0.9rem;
   padding: 1rem 2rem;
   text-align: center;
-  border-top: 1px solid #22222228;
+  border-top: 1px solid #22222204;
   margin-top: 4rem;
 }
 
@@ -542,7 +542,7 @@ pre {
 }
 
 .dark .site-footer {
-  background: #1f2937;
+  background: #111827;
   color: #888;
 }
 
