@@ -6,7 +6,7 @@ export default defineComponent({
   setup() {
     const profile = ref({
       name: "Li-Cheng Hsu | 許立晟",
-      image: BASE_URL + "images/about/me.JPG",
+      image: BASE_URL + "images/about/me.jpg",
       title: "Backend Developer | 技術部落格作者",
       bio: "熱愛後端架構設計，擅長整合 Spring Boot、Vue 與容器技術," +
       "打造可部署的服務。",
@@ -59,7 +59,6 @@ export default defineComponent({
     <img src="https://img.shields.io/github/stars/lichenghsu/pet-shop-backend-rest-api?style=flat-square" />
     <img src="https://img.shields.io/badge/springboot-ready-brightgreen" />
     <img src="https://img.shields.io/badge/vue3-SPA-blue" />
-    <img src="https://img.shields.io/badge/proxmox-lxc-orange" />
   </div>
 
  <div class="mt-6">
