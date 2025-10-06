@@ -3,7 +3,7 @@ title: Java 陣列
 cover: /images/java/Java-Logo.jpg
 sticky: false
 tags: [Java, Array]
-categories: [Java 基礎語法]
+categories: [Java 基本語法]
 order: 5
 layout: post
 published: true
