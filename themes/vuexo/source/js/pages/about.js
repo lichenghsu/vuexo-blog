@@ -5,10 +5,10 @@ export default defineComponent({
   name: "AboutPage",
   setup() {
     const profile = ref({
-      name: "Li-Cheng Hsu | 許立晟",
+      name: "Mylese",
       image: BASE_URL + "images/about/me.jpg",
       title: "Backend Developer | 技術部落格作者",
-      bio: "熱愛後端架構設計，擅長整合 Spring Boot、Vue 與容器技術," +
+      bio: "喜歡忙裡偷閒的小小程式設計師，目前工作主要應用 Spring Boot、Vue 與容器技術," +
       "打造可部署的服務。",
       links: [
         {
