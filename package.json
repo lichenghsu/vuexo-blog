@@ -30,7 +30,7 @@
     "markdown-it-prism": "^3.0.0",
     "minisearch": "^7.1.2",
     "prismjs": "^1.29.0",
-    "vue-router": "^4.5.1"
+    "vue-router": "^5.0.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.11",
